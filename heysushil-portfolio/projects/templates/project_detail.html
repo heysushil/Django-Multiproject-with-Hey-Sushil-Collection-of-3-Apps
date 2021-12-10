@@ -1,0 +1,21 @@
+{% extends 'projects_main.html' %}
+
+{% block page_content %}
+{% load static %}
+
+<div class="container-fluid bg-3 text-center">    
+    <h3>{{data.title}}</h3><br>
+    <div class="row">
+        {% comment %} {% for data in projects %} {% endcomment %}
+      <div class="col-sm-8">        
+        <img src="{% static data.image %}" class="img-responsive" style="width:100%" alt="Image">
+      </div>
+      <div class="col-sm-4">                
+        <p>{{data.title}}</p>
+        <p>{{data.description}}</p>
+        <p>{{data.technology}}</p>
+      </div>
+      {% comment %} {% endfor %} {% endcomment %}
+    </div>
+
+{% endblock %}

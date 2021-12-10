@@ -1,0 +1,18 @@
+{% extends 'projects_main.html' %}
+
+{% block page_content %}
+{% load static %}
+
+<div class="container-fluid bg-3 text-center">    
+    <h3>My All Projects</h3><br>
+    <div class="row">
+        {% for data in projects %}
+      <div class="col-sm-3">        
+        <img src="{% static data.image %}" class="img-responsive" style="width:100%" alt="Image">
+        <p>{{data.title}}</p>
+        <a class="btn btn-bg btn-danger" href="{% url 'project_detial' data.pk %}">View</a>
+      </div>
+      {% endfor %}
+    </div>
+
+{% endblock %}
