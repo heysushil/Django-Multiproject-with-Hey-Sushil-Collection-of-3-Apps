@@ -10,3 +10,9 @@ Blog App:
 Post
 Category
 Comment
+
+Blog App: Views
+
+blog_index
+blog_detail
+blog_category

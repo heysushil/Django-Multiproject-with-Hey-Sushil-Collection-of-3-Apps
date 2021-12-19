@@ -1,0 +1,10 @@
+<h1>All blog posts list</h1>
+
+{% comment %} start for loop {% endcomment %}
+{% for data in posts %}
+<h3>{{data.title}}</h3><br>
+{% comment %} <p>{{data.body}}</p><br> {% endcomment %}
+{{data.created_on}}<br>
+{{data.last_modifed}}<br>
+{{data.categories}}<br><br>
+{% endfor %}
