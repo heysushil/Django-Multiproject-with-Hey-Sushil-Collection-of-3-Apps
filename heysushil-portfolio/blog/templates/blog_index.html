@@ -1,10 +1,43 @@
-<h1>All blog posts list</h1>
+{% extends 'blog_main.html' %}
 
-{% comment %} start for loop {% endcomment %}
-{% for data in posts %}
-<h3>{{data.title}}</h3><br>
-{% comment %} <p>{{data.body}}</p><br> {% endcomment %}
-{{data.created_on}}<br>
-{{data.last_modifed}}<br>
-{{data.categories}}<br><br>
-{% endfor %}
+{% block page_content %}
+
+
+{% comment %} <h1>All blog posts list</h1> {% endcomment %}
+
+{% comment %} main blog post boxes {% endcomment %}
+<div class="container">
+    <div class="row">
+    {% for data in posts %}
+      <div class="col-4 col-sm-4 col-md-4 col-lg-4" style="margin-top: 15px;margin-bottom:15px;">        
+        <div class="card">
+          <img class="card-img" src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/pasta.jpg" alt="Bologna">
+          <div class="card-img">
+            {% for categroy in data.categories.all %} 
+            <a class="btn btn-sm btn-light" href="{% url 'blog_category' categroy.name %}">{{categroy.name}}</a>
+            {% endfor %}
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">{{data.title}}</h4>
+            <small class="text-muted cat">
+              <i class="far fa-clock text-info"></i> 30 Min
+            </small>
+            <p class="card-text">{{data.body | slice:":100"}}...</p>
+            <a class="btn btn-sm btn-info" href="{% url 'blog_detial' data.pk %}">Read More</a>
+          </div>
+          <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
+            <div class="views">{{data.created_on}}
+            </div>
+            <div class="stats">
+                 <i class="far fa-eye"></i> 1347
+              <i class="far fa-comment"></i> 12
+            </div>
+             
+          </div>
+        </div>          
+      </div>
+    {% endfor %}  
+    </div>
+  </div>
+
+{%endblock%}

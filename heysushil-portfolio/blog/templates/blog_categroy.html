@@ -1,0 +1,20 @@
+{% extends 'blog_main.html' %}
+
+{% block page_content %}
+
+<h1>Hello</h1>
+
+{% comment %} start for loop {% endcomment %}
+{% for data in posts %}
+<h3>{{data.title}}</h3><br>
+{% comment %} <p>{{data.body}}</p><br> {% endcomment %}
+{{data.created_on}}<br>
+{{data.last_modifed}}<br>
+{% for categroy in data.categories.all %}
+    {{categroy.name}}
+{% endfor %}
+<a class="btn btn-bg btn-danger" href="{% url 'blog_detial' data.pk %}">Read more</a>
+{% comment %} {{data.categories}}<br><br> {% endcomment %}
+{% endfor %}
+
+{%endblock%}

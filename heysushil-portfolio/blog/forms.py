@@ -1,0 +1,19 @@
+from django import forms
+
+class CommentForm(forms.Form):
+    author = forms.CharField(
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={
+                "class":"form-control",
+                "placeholder":"Enter your name"
+            }
+        )
+    )
+    body = forms.CharField(widget=forms.Textarea(
+        attrs={
+            "class":"form-control",
+            "placeholder":"Leave your comment."
+        }
+    ))
+# <input type="text" placeholder="heysushil" class="form-control">

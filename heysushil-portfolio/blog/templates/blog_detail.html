@@ -1,0 +1,40 @@
+{% extends 'blog_main.html' %}
+
+{% block page_content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <h1>{{data.title}}</h1>
+            {{data.created_on}} | {{data.last_modifed}}<br>
+            <br>
+            <p>{{data.body}}</p><br>
+            
+            {% for categroy in data.categories.all %}
+            <a class="btn btn-sm btn-primary" href="{% url 'blog_category' categroy.name %}">{{categroy.name}}</a>
+            {% endfor %}
+
+            <br>
+            <hr>
+            <br>
+            <h3>Leave your comment section</h3>
+
+            <form action="/blog/{{data.pk}}/" method="post">
+                {% csrf_token %}
+                <div>{{form.author}}</div><br>
+                <div>{{form.body}}</div>
+                <br>
+                <button type="submit" class="btn btn-bg btn-danger">Submit</button>
+            </form>
+
+            <hr>
+            <h3>Related comments</h3>
+            {% for comment in comments %}
+            <p>
+                {{comment.author}} | {{comment.created_on}}<br>
+                {{comment.body}}<br>
+            </p>
+            {% endfor %}
+
+            {% endblock %}
+</div>
