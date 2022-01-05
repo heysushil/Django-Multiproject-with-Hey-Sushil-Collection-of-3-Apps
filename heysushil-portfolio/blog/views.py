@@ -22,6 +22,7 @@ def blog_detail(request, pk):
                 post=post
             )
             comment.save()
+            form = CommentForm()
 
     # fetch all post realted comments form database
     comments = Comment.objects.filter(post=post)
